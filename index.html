@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #password-result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate a Random Password</h1>
+    <label for="length">Password Length:</label>
+    <input type="number" id="length" min="8" max="32" value="18">
+    <button id="generate-btn">Generate Password</button>
+    <p id="password-result"></p>
+
+    <script>
+        document.getElementById("generate-btn").addEventListener("click", async () => {
+            const length = document.getElementById("length").value;
+
+            try {
+                const response = await fetch(`http://localhost:200/espwd?length=${length}`);
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || "Failed to fetch password");
+                }
+                const data = await response.json();
+                document.getElementById("password-result").innerText = `Generated Password: ${data.password}`;
+                document.getElementById("password-result").style.color = "green";
+            } catch (error) {
+                document.getElementById("password-result").innerText = `Error: ${error.message}`;
+                document.getElementById("password-result").style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
