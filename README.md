@@ -38,6 +38,7 @@ terraform apply -auto-approve -var length=255; terraform output espassword
 ![Python command](passwordoutputpy.png)
 
 **Run as a webserver to generate passwords**
+**python -m http.server 8000 --bind <your own local IP>**
 ![Terraform password generator](passwordgen.png)
 
 **Gets stored on the Azure storage account**
