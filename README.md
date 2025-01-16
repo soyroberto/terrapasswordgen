@@ -33,9 +33,9 @@ terraform apply -auto-approve -var length=255; terraform output espassword
 ```
 
 ## How does it look like
-```
-python pwd.py
+
+**python pwd.py**
 ![Python command](passwordoutputpy.png)
-```
+
 
  
