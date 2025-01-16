@@ -23,3 +23,13 @@ terraform apply -auto-approve -var length=255; terraform output espassword
 
 **Every run will generate a new password and store it in the Azure storage account as part of the state.**
 **The storage account have versioning enabled, so you can always revert to a previous the password if needed.**
+
+## To run as a webservice on your local Machine (I do on my Mac):
+ ```
+ python pwd.py
+ python -m http.server 8000 --bind <your IP>
+```
+
+## How does it look like
+
+ 
