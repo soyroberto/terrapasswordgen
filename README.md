@@ -44,4 +44,14 @@ terraform apply -auto-approve -var length=255; terraform output espassword
 ![Terraform password on the storage account](passwordinstorageacc.png)
 
 
+## Variable requirements
+Define these variables for the Terraform code to authenticate in the Azure subscription otherwise it won't run
+
+```
+export ARM_CLIENT_ID=<your SVC principal)
+export ARM_CLIENT_SECRET=<SVC Principal secret> 
+export ARM_TENANT_ID=<Azure AD Tenant ID>
+export ARM_SUBSCRIPTION_ID=<Self explanatory>
+```
+
  **Roberto**
